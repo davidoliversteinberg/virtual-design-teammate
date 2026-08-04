@@ -32,9 +32,6 @@ Always on underneath every command: **design-partner-core** (routing - natural l
 - **Commands** are the team's named jobs. In Claude Code they are real slash commands (this repo's `commands/` directory). In Claude.ai and Cowork, typing the command phrase or describing the job naturally triggers the same stack - commands are shortcuts, not requirements.
 - **Live verification**: skills that touch the design system verify against the Axiom MCP (components, tokens, patterns, icons) and pull designs via the Figma MCP. Without connectors, skills say what they could not verify and continue with static guidance.
 
-## Parked skills
-
-`parked-skills/` holds 11 skills excluded from the active pack - see its README for why each is parked (research dedup with ResearchOS and All-hands resources, held for the Axiom/dev folder comparison, or deferred pending pilot learnings). To unpark: move the folder back to `skills/` and pass `/skill-eval`.
 
 ## Quality benchmark
 
