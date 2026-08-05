@@ -8,19 +8,19 @@ This pack will be open for contributions from the design team. Every skill is a 
 
 ## Architecture: phase -> commands -> skills
 
-| Phase | Command | Skill stack (lead first) |
-|---|---|---|
-| Define | `/strategize` | design-strategy + prd-to-design-plan + success-metrics + design-communication |
-| Define | `/map-journey` | journey-mapping + success-metrics |
-| Define | `/define-metrics` | success-metrics + design-strategy + experiment-design |
-| Ideate | `/design-critique` | design-critique + accessibility + ux-laws + ux-writing |
-| Ideate | `/design-pattern` | enterprise-patterns / interaction-patterns + flows-and-states + visual-design + ux-writing + accessibility |
-| Ideate | `/ia` | information-architecture + ux-writing + enterprise-patterns |
-| Ideate | `/ux-writing` | ux-writing + accessibility |
-| Handoff | `/handoff` | developer-handoff + flows-and-states + accessibility + ux-writing |
-| Testing | `/hypothesis` | experiment-design + success-metrics |
-| Testing | `/test-plan` | experiment-design + prototype-strategy + success-metrics |
-| Others | `/skill-eval` | skill-quality-audit |
+| Phase | Command | Description | Skill stack (lead first) |
+|---|---|---|---|
+| Define | `/strategize` | Turn a product brief into a design strategy and actionable design plan with success metrics | design-strategy + prd-to-design-plan + success-metrics + design-communication |
+| Define | `/map-journey` | Map the end-to-end user journey to surface key touchpoints, pain points, and opportunities | journey-mapping + success-metrics |
+| Define | `/define-metrics` | Define the success metrics and experiment approach for a design or initiative | success-metrics + design-strategy + experiment-design |
+| Ideate | `/design-critique` | Run a structured critique of a design against usability, accessibility, and writing heuristics | design-critique + accessibility + ux-laws + ux-writing |
+| Ideate | `/design-pattern` | Select and apply the right enterprise or interaction pattern for a design problem | enterprise-patterns / interaction-patterns + flows-and-states + visual-design + ux-writing + accessibility |
+| Ideate | `/ia` | Structure the information architecture of a product surface or flow | information-architecture + ux-writing + enterprise-patterns |
+| Ideate | `/ux-writing` | Draft and refine UX copy for a design | ux-writing + accessibility |
+| Handoff | `/handoff` | Prepare a finished design for developer handoff with specs, states, and accessibility notes | developer-handoff + flows-and-states + accessibility + ux-writing |
+| Testing | `/hypothesis` | Form a testable hypothesis to guide an experiment | experiment-design + success-metrics |
+| Testing | `/test-plan` | Build a test plan to validate a design or feature before shipping | experiment-design + prototype-strategy + success-metrics |
+| Others | `/skill-eval` | Run the quality benchmark to validate a skill before merging | skill-quality-audit |
 
 Always on underneath every command: **design-partner-core** (routing - natural language works exactly like commands) and **design-context** (Optimizely grounding: Axiom MCP verification, product surfaces, user archetypes, voice).
 
