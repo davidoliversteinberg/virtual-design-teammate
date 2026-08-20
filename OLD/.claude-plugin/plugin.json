@@ -1,0 +1,9 @@
+{
+  "name": "virtual-design-teammates",
+  "version": "0.2.0",
+  "description": "Virtual Design Teammates: a Claude skill pack for Optimizely product designers, structured as phase-based commands (Define, Ideate, Handoff, Testing) orchestrating reusable skills behind each. Axiom-aware via MCP. Includes a skill-quality-audit benchmark so the team can contribute new skills safely.",
+  "author": {
+    "name": "Tien Le, Platform & Commerce Design"
+  },
+  "keywords": ["design", "ux", "axiom", "optimizely", "skills", "commands"]
+}

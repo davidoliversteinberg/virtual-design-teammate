@@ -1,13 +1,17 @@
 ---
-description: Create a testing plan
-argument-hint: [hypothesis or feature to test]
+description: Route a testing request to usability validation, experimentation, or skill evaluation
+argument-hint: [design, hypothesis, experiment, or skill to test]
 ---
 
-Design the test: variants, randomization unit, sample size and duration, decision rules pre-committed.
+Determine what evidence is needed, then run the correct testing workflow. Do not treat usability testing, randomized experimentation, and skill evaluation as interchangeable.
 
-Skill stack for this command (read the lead skill first, load supporting skills as the workflow reaches them - all bundled in this plugin):
-1. skills/experiment-design/SKILL.md (lead)
-2. skills/prototype-strategy/SKILL.md (what artifact to test at what fidelity)
-3. skills/success-metrics/SKILL.md (metric definitions)
+Route by intent:
+1. skills/design-validation/SKILL.md - can target users understand and complete the design?
+2. skills/experiment-design/SKILL.md - does a production treatment causally move a metric?
+3. skills/skill-quality-audit/SKILL.md - does a skill trigger and behave correctly?
 
-Run the lead skill's workflow on: $ARGUMENTS
+Supporting skills when relevant:
+- skills/prototype-strategy/SKILL.md - choose the artifact and fidelity
+- skills/success-metrics/SKILL.md - define outcome and guardrail measures
+
+Run the selected lead skill's workflow on: $ARGUMENTS
