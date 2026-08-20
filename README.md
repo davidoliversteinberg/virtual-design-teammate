@@ -6,6 +6,36 @@ It combines product strategy, journeys, information architecture, enterprise int
 
 This repository is currently a testing fork. The inherited implementation is preserved under [`OLD/`](OLD/) while the active system is developed at the repository root.
 
+## How to use it
+
+Describe the design outcome you need in natural language. You do not need to select every skill manually: the pack can route a broad request through `design-partner-core`, or you can invoke a specialist directly when the job is already clear.
+
+### Start with `design-partner-core` for broad work
+
+`design-partner-core` is the orchestrator. Use it when the request is ambiguous, spans several phases, or needs the right combination of strategy, flows, UX writing, frontend design, validation, experimentation, and handoff.
+
+Example: “Help us rethink onboarding, decide what to prototype, validate it with users, and prepare the engineering handoff.”
+
+### Use `frontend-design` directly for visible UI
+
+`frontend-design` is the interface-making specialist. Use it when the task is specifically to design, build, or polish a visible product interface. It owns the interaction model, composition, typography, content and action hierarchy, Axiom-aware implementation, responsive rendering, and the scored visual-quality gate.
+
+Example: “Design and implement this onboarding screen using Axiom V3, then verify it at desktop and narrow widths.”
+
+| | `design-partner-core` | `frontend-design` |
+|---|---|---|
+| Role | Routes and coordinates the work | Designs and verifies the visible interface |
+| Best for | Broad, vague, or multi-part design requests | A clearly defined UI design, build, or polish task |
+| Typical supporting skills | Selects the smallest useful skill stack | Adds flows, UX writing, and accessibility when needed |
+| Output | A coherent workflow across design phases | A composed, implemented, rendered, and quality-gated interface |
+
+They are designed to work together. The core routes visible interface work to `frontend-design` and brings in `ux-writing`, `accessibility`, or `flows-and-states` only when those skills materially contribute. For a clearly defined UI task, skip the router and invoke `frontend-design` directly.
+
+For explicit invocation:
+
+- In Codex, use `$design-partner-core` or `$frontend-design`.
+- In Claude Code, use `/design-partner-core` or `/frontend-design` when the skills are installed personally. Plugin installations may namespace skills under the plugin name.
+
 ## Credit and lineage
 
 This work builds on [Tien Le's original Virtual Design Teammate](https://github.com/notienle/virtual-design-teammate), created for Optimizely's Platform & Commerce Design team.

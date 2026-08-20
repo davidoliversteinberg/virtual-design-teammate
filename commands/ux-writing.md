@@ -1,5 +1,5 @@
 ---
-description: Write or fix UI copy: errors, empty states, CTAs, labels
+description: "Write or fix UI copy: errors, empty states, CTAs, labels"
 argument-hint: [element + context, or text to fix]
 ---
 

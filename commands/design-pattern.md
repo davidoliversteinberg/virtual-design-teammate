@@ -1,5 +1,5 @@
 ---
-description: Spec a UI pattern: tables, filters, bulk actions, forms, wizards, connectors
+description: "Spec a UI pattern: tables, filters, bulk actions, forms, wizards, connectors"
 argument-hint: [pattern + context]
 ---
 
