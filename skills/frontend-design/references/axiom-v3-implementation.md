@@ -4,13 +4,14 @@ This is the detailed Axiom V3 implementation profile extracted from `axiom-play`
 
 ## Required preflight
 
-- If a Figma design exists or is supplied for the surface being built, fetch it (`get_design_context` plus `get_variable_defs`, and `get_screenshot` for visual confirmation) before writing layout code. Treat its exact spacing, typography and component composition as authoritative over general judgment calls, prose descriptions or reference screenshots from elsewhere — those are useful for interaction intent, not for pixel/token fidelity. If the fetched Figma content conflicts with an existing implementation or with general guidance below, follow the Figma spec and state the reconciliation rather than silently picking one. Do not proceed to layout code on a Figma-sourced surface from memory or assumption once a node ID is available — fetch it first.
+- Complete `axiom-evidence-and-compliance.md` before implementation. Its component inventory and live lookup are required, not conditional on the model feeling uncertain.
+- If a Figma design exists or is supplied for the surface being built, fetch it (`get_design_context` plus `get_variable_defs`, and `get_screenshot` for visual confirmation) before writing layout code. Treat its exact spacing, typography and component composition as authoritative over general judgment calls, prose descriptions or reference screenshots from elsewhere. If the fetched Figma content conflicts with an existing implementation or general guidance below, state the reconciliation rather than silently picking one.
 - Inspect nearby production-quality routes and reuse established page structure and local wrappers.
 - Use `@optiaxiom/react` whenever an equivalent component exists.
 - Use semantic color tokens and spacing tokens.
 - Use the correct icon package for the product area.
 - Split files over 300 lines or with multiple concerns before adding behavior.
-- Query the configured `axiom-v3` MCP when a component API, prop or token is uncertain; do not guess.
+- Query the configured stable Axiom MCP for every selected interactive or compound component. Use installed package exports and types as the final API check.
 
 ## Component contract
 
@@ -95,6 +96,7 @@ Caption is implemented at `app/dam/components/Caption.tsx` until Axiom ships a p
 - `Input` and `SearchInput` support `md` (default), `lg` and `xl`; never `sm`.
 - Wrap inputs with `Field`; do not create manual text labels.
 - Keep form-control sizes consistent within a row or section.
+- Pass icons through `Button`'s `icon` and `iconPosition` props. Apply the leading-filled/trailing-unfilled convention from `axiom-evidence-and-compliance.md`; do not hand-compose icon spacing inside Button children.
 
 `Select` is data-driven. `value` must match one of `options`; validate persisted/remote values before rendering. Do not render native `<option>` children.
 

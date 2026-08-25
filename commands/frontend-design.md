@@ -7,8 +7,12 @@ Create or change the interface through explicit interaction-model selection, com
 
 Skill stack:
 1. skills/frontend-design/SKILL.md (lead and completion authority)
-2. skills/flows-and-states/SKILL.md (when sequence or missing states matter)
-3. skills/ux-writing/SKILL.md (when interface strings change)
-4. skills/accessibility/SKILL.md (when deeper requirements or audit are needed)
+2. skills/design-review/SKILL.md (first when an existing artifact must be diagnosed before editing)
+3. skills/flows-and-states/SKILL.md (when sequence or missing states matter)
+4. skills/enterprise-patterns/SKILL.md or skills/interaction-patterns/SKILL.md (when a specialist pattern applies)
+5. skills/ux-writing/SKILL.md (whenever interface strings change)
+6. skills/accessibility/SKILL.md (for materially changed interaction or a deeper audit)
+
+The lead skill selects this supporting stack automatically. For Axiom work, it must retrieve component evidence before coding and prove compliance after implementation.
 
 Run the lead skill's workflow on: $ARGUMENTS

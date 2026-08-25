@@ -60,6 +60,8 @@ Any of these blocks completion regardless of score:
 - broken responsive layout or horizontal clipping at the tested width;
 - unverified rendered screenshots;
 - raw controls or hardcoded product chrome where Axiom/semantic tokens exist.
+- an Axiom compound or interactive component whose anatomy, props or icon export contradict live documentation or the installed package;
+- a custom primitive or generic wrapper introduced without proving that no suitable Axiom component, documented composition or established local pattern exists.
 
 ## Gate details
 

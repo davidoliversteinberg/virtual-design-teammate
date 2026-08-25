@@ -20,6 +20,8 @@ Example: “Help us rethink onboarding, decide what to prototype, validate it wi
 
 `frontend-design` is the interface-making specialist. Use it when the task is specifically to design, build, or polish a visible product interface. It owns the interaction model, composition, typography, content and action hierarchy, Axiom-aware implementation, responsive rendering, and the scored visual-quality gate.
 
+When invoked directly, `frontend-design` now selects its own smallest useful support stack. It brings in `design-review` before changing an existing artifact when diagnosis is needed; `flows-and-states` for branching and missing states; `enterprise-patterns` or `interaction-patterns` for specialist behavior; `ux-writing` whenever interface strings change; and `accessibility` for materially changed interaction or deeper WCAG work. You do not need to invoke those skills individually.
+
 Example: “Design and implement this onboarding screen using Axiom V3, then verify it at desktop and narrow widths.”
 
 | | `design-partner-core` | `frontend-design` |
@@ -30,6 +32,14 @@ Example: “Design and implement this onboarding screen using Axiom V3, then ver
 | Output | A coherent workflow across design phases | A composed, implemented, rendered, and quality-gated interface |
 
 They are designed to work together. The core routes visible interface work to `frontend-design` and brings in `ux-writing`, `accessibility`, or `flows-and-states` only when those skills materially contribute. For a clearly defined UI task, skip the router and invoke `frontend-design` directly.
+
+### Axiom component accuracy
+
+For Axiom interfaces, the skill does not rely on remembered component APIs. It inventories the intended UI, retrieves every selected interactive or compound component through the stable Axiom MCP, reconciles Figma instances with Code Connect and the installed package, records the required component parts and props, and verifies the implementation again after coding.
+
+This is especially important for compound components. A Card must use its documented regions and slots rather than an improvised collection of boxes; a Button must use its icon API rather than hand-built spacing; and a Figma component without a code mapping must be classified as a supported composition or an explicit design-system gap before new infrastructure is created.
+
+The public [components](https://optimizely-axiom.github.io/optiaxiom/components/), [styling](https://optimizely-axiom.github.io/optiaxiom/styling/), and [guides](https://optimizely-axiom.github.io/optiaxiom/guides/) remain authoritative supporting sources. The [Axiom MCP](https://optimizely-axiom.github.io/optiaxiom/guides/mcp/) supplies relevant current documentation on demand, while the target repository's installed package types remain the final API check.
 
 For explicit invocation:
 
@@ -108,7 +118,7 @@ The system explicitly detects common generic-interface failure modes:
 
 The frontend-design skill maps design intent into Axiom V3 components, semantic color tokens, spacing tokens, typography roles, form patterns, menu patterns, page-shell behavior, icons, dark mode, accessibility, and repository conventions.
 
-When Axiom or Figma tools are connected, component APIs, tokens, variables, and design nodes are verified live rather than guessed from memory.
+Component APIs, compound anatomy, patterns, tokens and icons are retrieved before implementation and verified again afterward. Figma nodes and Code Connect mappings are reconciled with the installed package rather than treated as screenshots or trusted from memory. If live tools are unavailable, the skill inspects installed declarations and states the missing verification.
 
 ### 8. Visual-reference interpretation
 

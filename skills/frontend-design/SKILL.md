@@ -6,7 +6,7 @@ description: >
   Axiom-aware implementation, responsive rendering, and scored visual-quality validation.
   Use for making or changing interfaces; use design-review instead when the user only wants critique.
 metadata:
-  version: "0.3.0"
+  version: "0.4.0"
   phase: make
 ---
 
@@ -15,6 +15,20 @@ metadata:
 Use this skill for every visible product-UI design, implementation, or polish task. It is the authority for the made interface: product-design judgment comes first, Axiom implementation second, and rendered verification last.
 
 The target is calm, premium, intelligent, restrained, operational, enterprise credible and recognizably Optimizely. Do not import a generic creative-UI aesthetic, marketing-page novelty or maximalism into product surfaces.
+
+## Supporting-skill routing
+
+Remain the lead for the made interface. Load `design-context` silently, then add only the specialists whose contribution is material:
+
+- Load `design-review` first when the user wants an existing artifact diagnosed and changed. Preserve its prioritized findings, then resume here for implementation.
+- Load `flows-and-states` when the work adds branching, permissions, loading, empty, error, success, async or recovery states.
+- Load `enterprise-patterns` for tables, filters, bulk actions, permissions, settings, wizards, connectors or audit logs.
+- Load `interaction-patterns` for forms, search, onboarding, feedback, loading or micro-interactions.
+- Load `ux-writing` whenever visible interface strings, terminology, status, confirmation, empty-state or recovery language changes.
+- Load `accessibility` for new or materially changed interaction, keyboard, focus, contrast, announcement or reduced-motion behavior, and for every requested WCAG audit.
+- Load `developer-handoff` only when the requested output includes implementation notes or acceptance criteria for another team.
+
+Do not load a sibling merely to repeat generic advice. The supporting skill owns its specialist decision; this skill owns the integrated interface and completion gate. If a needed specialist is unavailable, apply the essential requirement, name the missing verification and continue when safe.
 
 ## Mandatory reading
 
@@ -25,7 +39,8 @@ For every visible UI task, read in this order:
 
 Then read only the references that apply:
 
-- [`references/axiom-v3-implementation.md`](references/axiom-v3-implementation.md) before writing or reviewing Axiom Play product UI code. Its Figma preflight step is mandatory whenever a Figma node exists or is supplied. Outside Axiom Play, apply its Axiom principles but defer repository paths and local wrappers to the target codebase.
+- [`references/axiom-evidence-and-compliance.md`](references/axiom-evidence-and-compliance.md) whenever the interface will use Axiom or claim Axiom compliance. It makes live component retrieval, Figma-to-code reconciliation and post-implementation proof mandatory.
+- [`references/axiom-v3-implementation.md`](references/axiom-v3-implementation.md) before writing or reviewing Axiom Play product UI code. Outside Axiom Play, apply its Axiom principles but defer repository paths and local wrappers to the target codebase.
 - [`references/editorial-surfaces.md`](references/editorial-surfaces.md) for DAM, Brand Packs, imagery, typography, logos, color systems, templates or other visual subjects.
 - [`references/visual-reference-analysis.md`](references/visual-reference-analysis.md) whenever a screenshot, mockup or prototype is supplied.
 - [`references/motion-rules.md`](references/motion-rules.md) when motion, transitions, loading, panels, menus or animated state changes are involved.
@@ -67,8 +82,9 @@ The detailed rules and positive alternatives live only in the references above. 
 After the design brief:
 
 - Inspect nearby live routes and reusable components.
-- Implement with the applicable Axiom authority and target-repository rules.
+- Implement with the applicable Axiom authority and target-repository rules. For Axiom work, complete the component evidence record before coding.
 - Preserve semantic tokens, spacing tokens, icon-package rules, form/menu rules, dark mode, accessibility and file boundaries.
+- Do not invent a design-system primitive, generic wrapper or component infrastructure until live lookup and installed-package inspection prove there is no suitable component or documented composition. A shared wrapper also needs repeated product use or explicit user scope.
 - Never leave dead controls or claim behavior that is not implemented.
 - Do not extend a monolithic file; split concerns before adding behavior.
 
@@ -77,5 +93,7 @@ After the design brief:
 Visible UI work is incomplete until it is rendered at the primary desktop width and at least one narrower width, compared against the design intent/reference, and scored with `visual-quality-gates.md`.
 
 Minimum passing score: **17/20 with no zero and no automatic failure**. TypeScript, lint, route `200`, or component compliance alone never proves visual quality.
+
+For Axiom work, completion also requires the postflight in `axiom-evidence-and-compliance.md`: verify every changed compound or interactive component against live documentation and the installed package, run the repository's deterministic Axiom check when available, and report any exception or unverifiable mapping.
 
 If browser or screenshot verification is unavailable, state that explicitly and do not claim the UI is visually verified.
