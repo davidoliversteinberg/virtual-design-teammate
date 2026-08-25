@@ -1,6 +1,6 @@
 {
   "name": "virtual-design-teammate",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "An Optimizely product-design teammate spanning strategy, UX writing, interaction and frontend design, critique, validation, experimentation, and developer handoff.",
   "author": {
     "name": "David Steinberg and contributors"

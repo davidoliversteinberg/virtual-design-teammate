@@ -32,8 +32,8 @@ Before writing UI code:
 5. Reconcile MCP results with installed exports and types. The installed package wins when versions differ.
 6. Write a compact internal component evidence record:
 
-| Intended element | Figma component | Axiom component or pattern | Required parts/props | Installed verification | Exception |
-| --- | --- | --- | --- | --- | --- |
+| Intended element | Figma component | Axiom component or pattern | Required parts/props | Layout/default assumptions | Installed verification | Exception |
+| --- | --- | --- | --- | --- | --- | --- |
 
 Do not begin component infrastructure while an evidence row is unresolved.
 
@@ -55,6 +55,8 @@ Do not reconstruct an Axiom Card with arbitrary boxes. Verify the current Card p
 - `CardHeader` slots `addonBefore` and `addonAfter`, plus its description.
 
 Put controls in the documented slots rather than absolutely positioning parallel markup. Use a product-specific wrapper such as an asset card only when the same domain composition repeats and the wrapper preserves the Axiom anatomy.
+
+Inspect the installed Card and CardPreview styles before overriding their padding, margin or overflow. Some versions use parent padding together with negative preview margins and a separately padded overlay. Setting a zero-padding Card or clipping overflow can cancel a slot's visible inset even while the overlay itself reports the expected padding. Follow `acceptance-and-geometry.md`: measure every occupied corner against the visible preview boundary and verify default, hover and narrow states.
 
 ### Button and icons
 
@@ -86,10 +88,11 @@ After implementation and before visual scoring:
 
 1. Inventory every changed Axiom component, compound part, icon and token.
 2. Re-run `get_component` for each changed compound or interactive component and compare the implementation with its current parts, props and documented pattern.
-3. Confirm every imported component and icon exists in the installed packages.
-4. Run TypeScript, lint and the repository's deterministic Axiom checker when one exists. Treat unsupported props, legacy component parts, invalid compound anatomy, raw replacement controls and icon-policy failures as blockers.
-5. Exercise the rendered interaction states and complete `visual-quality-gates.md`.
-6. Report the component evidence record, checks run, exceptions, version differences and anything that could not be verified.
+3. Reinspect parent/child layout defaults whenever padding, margin, overflow, position, display or sizing was overridden.
+4. Confirm every imported component and icon exists in the installed packages.
+5. Run TypeScript, lint and the repository's deterministic Axiom checker when one exists. Treat unsupported props, legacy component parts, invalid compound anatomy, raw replacement controls and icon-policy failures as blockers.
+6. Exercise the rendered interaction states and complete `acceptance-and-geometry.md` plus `visual-quality-gates.md`.
+7. Report the component evidence record, checks run, exceptions, version differences and anything that could not be verified.
 
 Code compilation does not prove correct composition. Visual similarity does not prove valid API use. Both evidence paths must pass.
 

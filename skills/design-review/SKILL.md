@@ -2,7 +2,7 @@
 name: design-review
 description: Critique an existing Optimizely screen, flow, Figma design, screenshot, prototype, HTML file, or working URL through UX, accessibility, Axiom, and visual-craft lenses. Use for design feedback, heuristic reviews, Axiom reviews, accessibility reviews, and pre-ship design audits. Do not use when the user primarily wants a new interface built or changed; route that to frontend-design.
 metadata:
-  version: "0.3.0"
+  version: "0.4.0"
   phase: review
 ---
 
@@ -18,6 +18,8 @@ This skill critiques an existing artifact. It does not generate redesigns or edi
 - **Figma:** fetch design context, variables, and screenshots when tools are connected. A Figma node is inspectable ground truth, not merely a visual reference.
 - **HTML or source:** inspect rendered evidence when possible and use code for semantics, labels, ARIA, focus behavior, tokens, and state handling.
 - **Working URL:** capture the actual viewport and exercise relevant reachable states. Record what was and was not reached.
+
+When the user reports a specific visual defect or supplies a correction screenshot, read [`../frontend-design/references/acceptance-and-geometry.md`](../frontend-design/references/acceptance-and-geometry.md). Keep the named route, object, state, viewport and visible boundary locked throughout the review. Inspect the exact target before checking similar components.
 
 Never recreate a supplied design merely to annotate or critique it. Use the actual screenshot, Figma export, or browser capture. When real image pixels are unavailable, use precise structured locations rather than a fabricated visual.
 
@@ -49,7 +51,9 @@ For source-code compliance scanning or mechanical fixes, use the repository's de
 
 ### Visual craft
 
-Use [`../frontend-design/references/interaction-and-composition.md`](../frontend-design/references/interaction-and-composition.md) and [`../frontend-design/references/visual-quality-gates.md`](../frontend-design/references/visual-quality-gates.md) as the visual authority. Evaluate interaction-model fit, focal ownership, reading order, typography, density, content restraint, action hierarchy, surface discipline, Optimizely character, and responsive implications.
+Use [`../frontend-design/references/interaction-and-composition.md`](../frontend-design/references/interaction-and-composition.md), [`../frontend-design/references/acceptance-and-geometry.md`](../frontend-design/references/acceptance-and-geometry.md) and [`../frontend-design/references/visual-quality-gates.md`](../frontend-design/references/visual-quality-gates.md) as the visual authority. Evaluate interaction-model fit, focal ownership, reading order, typography, density, content restraint, action hierarchy, surface discipline, Optimizely character, responsive implications and any explicit acceptance criteria.
+
+For spacing, collision, clipping, alignment or target-size findings, compare the pixels with geometry measured against the visible painted boundary. Inspect ancestor clipping and layout defaults when the numbers and screenshot disagree. Never accept a computed-style value as proof while the rendered defect remains visible.
 
 Do not call a design strong merely because its components are valid. A technically compliant screen can still have the wrong model, no focal point, tiny type, repetitive content, or generic card assembly.
 

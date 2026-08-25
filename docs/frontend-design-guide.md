@@ -58,6 +58,12 @@ Visible strings, terminology, confirmation, status, empty-state, and recovery la
 
 The skill renders changed UI at the primary desktop width and at least one narrower width, exercises relevant states, inspects screenshots, and scores ten quality categories. Passing requires at least 17/20, no category scored zero, and no automatic failure.
 
+### Lock explicit corrections and verify systemic fixes
+
+When a user identifies a visible defect, the skill records the exact route, object, state, viewport, expected result and evidence method. That criterion remains blocking until the same target passes. It then checks every instance, state and width that shares the responsible implementation so a local patch does not leave the system inconsistent.
+
+For spacing, alignment, collision and clipping, the skill measures the painted target against the visible reference boundary after ancestor clipping. Computed styles support the explanation but cannot overrule contradictory pixels. If the user reports that the defect remains, the previous completion claim and score are revoked.
+
 ## Automatic supporting-skill routing
 
 `frontend-design` remains responsible for the integrated interface and completion gate. It automatically loads only specialists that materially improve the current task.
@@ -82,6 +88,9 @@ Your prompt and evidence
         |
         v
 Context + automatic specialist routing
+        |
+        v
+Acceptance contract + systemic scope
         |
         v
 Compact design brief
@@ -195,6 +204,7 @@ A completed frontend-design task should make the following visible to the user:
 - the important composition, content, action, and surface choices;
 - which supporting skills materially contributed;
 - which Axiom, Figma, repository, or browser evidence was inspected;
+- the explicit acceptance criteria, exact targets and visible-boundary measurements when applicable;
 - the implementation or prioritized findings requested by the user;
 - tests and deterministic checks that ran;
 - desktop and narrow-width rendering status;

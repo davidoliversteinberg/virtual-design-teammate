@@ -6,7 +6,7 @@ description: >
   Axiom-aware implementation, responsive rendering, and scored visual-quality validation.
   Use for making or changing interfaces; use design-review instead when the user only wants critique.
 metadata:
-  version: "0.4.1"
+  version: "0.5.0"
   phase: make
 ---
 
@@ -35,7 +35,8 @@ Do not load a sibling merely to repeat generic advice. The supporting skill owns
 For every visible UI task, read in this order:
 
 1. [`references/interaction-and-composition.md`](references/interaction-and-composition.md) — interaction model, focal point, composition, typography, density, content, actions and surfaces.
-2. [`references/visual-quality-gates.md`](references/visual-quality-gates.md) — scored rendered-quality gate, accessibility, responsiveness and automatic failures.
+2. [`references/acceptance-and-geometry.md`](references/acceptance-and-geometry.md) — explicit acceptance criteria, systemic scope, visible-boundary measurement and correction-loop discipline.
+3. [`references/visual-quality-gates.md`](references/visual-quality-gates.md) — scored rendered-quality gate, accessibility, responsiveness and automatic failures.
 
 Then read only the references that apply:
 
@@ -91,6 +92,8 @@ After the design brief:
 ## Completion contract
 
 Visible UI work is incomplete until it is rendered at the primary desktop width and at least one narrower width, compared against the design intent/reference, and scored with `visual-quality-gates.md`.
+
+Every explicit user correction remains a blocking acceptance criterion until the exact route, object, state and viewport pass against the visible rendered boundary. A prior pass is revoked when the user reports that the defect remains. Do not substitute a similar component, route or state, and do not use computed styles or invisible layout bounds to overrule contradictory pixels.
 
 Minimum passing score: **17/20 with no zero and no automatic failure**. TypeScript, lint, route `200`, or component compliance alone never proves visual quality.
 

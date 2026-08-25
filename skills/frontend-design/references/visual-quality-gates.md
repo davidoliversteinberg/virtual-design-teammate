@@ -6,12 +6,13 @@ This is the completion authority for visible Optimizely product UI. Score the re
 
 Before scoring:
 
-1. Render the changed route at its primary desktop width.
-2. Render at least one narrower width appropriate to the route.
-3. Exercise reachable hover, focus, selected, loading, empty, error, disabled, modal/drawer and action states that changed.
-4. Capture screenshots.
-5. Compare them with the stated design brief and any supplied reference.
-6. Fix visible problems, then score the revised result.
+1. Complete the acceptance contract and systemic scope in `acceptance-and-geometry.md`.
+2. Render the exact changed route, named object and state at its primary desktop width.
+3. Render at least one narrower width appropriate to the route.
+4. Exercise reachable hover, focus, selected, loading, empty, error, disabled, modal/drawer and action states that changed.
+5. Capture screenshots and measure explicit geometry requirements against visible painted boundaries.
+6. Compare the pixels and measurements with the acceptance contract, design brief and supplied references.
+7. Fix visible problems, then score the revised result.
 
 TypeScript, lint, build and route `200` checks are required where relevant but do not count as visual evidence.
 
@@ -48,6 +49,10 @@ Do not inflate scores because the code is compliant. A technically correct surfa
 
 Any of these blocks completion regardless of score:
 
+- an explicit user acceptance criterion that remains unmet or was tested on a substitute route, object, state or viewport;
+- a claimed measurement taken from an offscreen, unclipped or otherwise different boundary than the one visible to the user;
+- computed geometry and screenshot evidence that contradict one another;
+- a repeated component fix applied only to one instance while the shared defect remains elsewhere;
 - clipped, obscured or unreachable actions;
 - unreadably small typography or use of `xs`/10px product text;
 - body/explanatory content rendered as Caption or repeated monospaced uppercase labels;

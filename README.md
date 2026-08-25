@@ -22,6 +22,7 @@ Read the **[complete frontend-design user guide](docs/frontend-design-guide.md)*
 - everything the skill can design, implement, inspect, and verify;
 - the automatic supporting-skill routing rules;
 - the Axiom component-evidence and Figma reconciliation workflow;
+- the acceptance contract, systemic regression scope and visible-geometry verification workflow;
 - ready-to-copy prompts for build, review, audit, Figma, UX-writing, and branch work;
 - expected outputs, limitations, installation, and update instructions.
 
@@ -44,6 +45,8 @@ When invoked directly, `frontend-design` now selects its own smallest useful sup
 Example: “Design and implement this onboarding screen using Axiom V3, then verify it at desktop and narrow widths.”
 
 You can include a route, branch, screenshot, Figma link, written requirement, or existing implementation. The skill adjusts its workflow to the available evidence. It should state which supporting skills it used, what it verified, what remains an assumption, and whether the rendered interface passed its quality gate.
+
+Explicit corrections remain blocking until the exact named route, object, state and viewport pass. The skill expands a local defect to every shared instance and relevant state, measures spacing against visible painted boundaries after clipping, and requires screenshot evidence to agree with computed geometry.
 
 | | `design-partner-core` | `frontend-design` |
 |---|---|---|
