@@ -6,7 +6,7 @@ description: >
   Axiom-aware implementation, responsive rendering, and scored visual-quality validation.
   Use for making or changing interfaces; use design-review instead when the user only wants critique.
 metadata:
-  version: "0.4.0"
+  version: "0.4.1"
   phase: make
 ---
 
@@ -97,3 +97,5 @@ Minimum passing score: **17/20 with no zero and no automatic failure**. TypeScri
 For Axiom work, completion also requires the postflight in `axiom-evidence-and-compliance.md`: verify every changed compound or interactive component against live documentation and the installed package, run the repository's deterministic Axiom check when available, and report any exception or unverifiable mapping.
 
 If browser or screenshot verification is unavailable, state that explicitly and do not claim the UI is visually verified.
+
+In the completion report, name the supporting skills that materially contributed, summarize the Axiom/Figma/repository/browser evidence actually inspected, and separate verified outcomes from remaining assumptions or unavailable checks.

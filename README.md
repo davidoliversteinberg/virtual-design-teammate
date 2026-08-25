@@ -6,6 +6,25 @@ It combines product strategy, journeys, information architecture, enterprise int
 
 This repository is currently a testing fork. The inherited implementation is preserved under [`OLD/`](OLD/) while the active system is developed at the repository root.
 
+## Start here
+
+| If you want to... | Start with | Example |
+|---|---|---|
+| Shape a broad or ambiguous product-design problem | `design-partner-core` | “Help us rethink this workflow from requirements through validation and handoff.” |
+| Design, build, or polish a visible interface | `frontend-design` | “Use frontend-design to implement this Figma screen with Axiom V3 and verify it responsively.” |
+| Diagnose an interface without changing it | `design-review` | “Audit this screen and prioritize the usability, accessibility, Axiom, and visual-craft issues.” |
+| Change only interface language | `ux-writing` | “Rewrite this confirmation and recovery flow in the Optimizely voice.” |
+
+The frontend skill automatically adds the relevant review, flow, pattern, UX-writing, accessibility, and handoff specialists. Users should describe the outcome and evidence they have; they do not need to orchestrate the skill stack themselves.
+
+Read the **[complete frontend-design user guide](docs/frontend-design-guide.md)** for:
+
+- everything the skill can design, implement, inspect, and verify;
+- the automatic supporting-skill routing rules;
+- the Axiom component-evidence and Figma reconciliation workflow;
+- ready-to-copy prompts for build, review, audit, Figma, UX-writing, and branch work;
+- expected outputs, limitations, installation, and update instructions.
+
 ## How to use it
 
 Describe the design outcome you need in natural language. You do not need to select every skill manually: the pack can route a broad request through `design-partner-core`, or you can invoke a specialist directly when the job is already clear.
@@ -24,11 +43,13 @@ When invoked directly, `frontend-design` now selects its own smallest useful sup
 
 Example: “Design and implement this onboarding screen using Axiom V3, then verify it at desktop and narrow widths.”
 
+You can include a route, branch, screenshot, Figma link, written requirement, or existing implementation. The skill adjusts its workflow to the available evidence. It should state which supporting skills it used, what it verified, what remains an assumption, and whether the rendered interface passed its quality gate.
+
 | | `design-partner-core` | `frontend-design` |
 |---|---|---|
 | Role | Routes and coordinates the work | Designs and verifies the visible interface |
 | Best for | Broad, vague, or multi-part design requests | A clearly defined UI design, build, or polish task |
-| Typical supporting skills | Selects the smallest useful skill stack | Adds flows, UX writing, and accessibility when needed |
+| Typical supporting skills | Selects the smallest useful skill stack | Adds review, flows, enterprise/interaction patterns, UX writing, accessibility, and handoff when needed |
 | Output | A coherent workflow across design phases | A composed, implemented, rendered, and quality-gated interface |
 
 They are designed to work together. The core routes visible interface work to `frontend-design` and brings in `ux-writing`, `accessibility`, or `flows-and-states` only when those skills materially contribute. For a clearly defined UI task, skip the router and invoke `frontend-design` directly.
@@ -45,6 +66,8 @@ For explicit invocation:
 
 - In Codex, use `$design-partner-core` or `$frontend-design`.
 - In Claude Code, use `/design-partner-core` or `/frontend-design` when the skills are installed personally. Plugin installations may namespace skills under the plugin name.
+
+For detailed prompt recipes and the full operating model, see the [frontend-design user guide](docs/frontend-design-guide.md).
 
 ## Credit and lineage
 
