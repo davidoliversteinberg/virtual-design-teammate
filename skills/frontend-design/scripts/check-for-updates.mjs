@@ -45,8 +45,13 @@ async function readCache() {
 }
 
 async function writeCache(value) {
-  await mkdir(cacheDirectory, { recursive: true });
-  await writeFile(cachePath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
+  try {
+    await mkdir(cacheDirectory, { recursive: true });
+    await writeFile(cachePath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function emit(result) {
