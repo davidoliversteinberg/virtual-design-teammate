@@ -2,18 +2,18 @@
 
 Use this workflow whenever an interface will be implemented with Axiom or described as Axiom-compliant. Do not ask the model to memorize the catalog. Retrieve the relevant contract before implementation and prove the result afterward.
 
-## Authority order
+## Evidence authority
 
-Resolve conflicts in this order:
+Use [`component-state-conformance.md`](component-state-conformance.md) to separate product intent, system contract and rendered evidence. There is no single authority for every question.
 
-1. The user's stated task and constraints.
-2. A supplied Figma node fetched through design context, variables and screenshot evidence.
-3. The installed `@optiaxiom/react` and icon package versions, exported types and lockfile.
-4. The stable official Axiom MCP for component documentation, props, patterns, tokens, icons, tests and guides.
-5. Nearby production-quality repository patterns and approved local wrappers.
-6. The public Axiom documentation, used as supporting evidence rather than an assumed version match.
+- The user's task owns the intended outcome and constraints.
+- Figma owns intended composition and visual acceptance evidence, but not the validity of an Axiom component, variant or state.
+- The installed `@optiaxiom/react` and icon package versions own the executable API and runtime implementation available to the repository.
+- The stable official Axiom MCP owns current documented semantics, anatomy, props, patterns, states, tokens, icons, tests and guides.
+- Nearby production-quality patterns and approved wrappers own repository-specific conventions when they remain compatible with the installed system.
+- Public documentation is supporting evidence and must not be assumed to match the installed version.
 
-Never claim that a public example compiles against the target repository until the installed package confirms it.
+Reconcile conflicts according to the question being answered. Never claim that a public example compiles locally until the installed package confirms it, and never copy a Figma state that contradicts the verified component contract without an explicit product decision.
 
 ## Mandatory preflight
 
@@ -21,7 +21,7 @@ Before writing UI code:
 
 1. Detect the installed Axiom React and icon versions from the target repository. Identify the package manager and authoritative lockfile.
 2. If Figma is supplied, fetch the target node, variables and screenshot. Record component instance names and Code Connect information when available.
-3. Inventory each distinct interactive, compound and data-display element in the intended interface. Include controls implied by states, not only the default screenshot.
+3. Complete the semantic component-and-state inventory in `component-state-conformance.md`. Include interactive descendants, states and render modes generated internally by compound components, not only elements visible in the default artifact or changed JSX.
 4. Query the stable Axiom MCP for every selected interactive or compound component, even when its name seems familiar:
    - use `search_components` when the mapping is unknown;
    - use `get_component` for the exact API, subcomponents and relevant props;
@@ -32,7 +32,7 @@ Before writing UI code:
 5. Reconcile MCP results with installed exports and types. The installed package wins when versions differ.
 6. Write a compact internal component evidence record:
 
-| Intended element | Figma component | Axiom component or pattern | Required parts/props | Layout/default assumptions | Installed verification | Exception |
+| Intent and semantic role | Figma evidence | Axiom component or pattern | Required anatomy/configuration | State model and render modes | Installed verification | Exception |
 | --- | --- | --- | --- | --- | --- | --- |
 
 Do not begin component infrastructure while an evidence row is unresolved.
@@ -80,6 +80,8 @@ For every Figma component instance:
 3. If no single component exists, compose documented Axiom primitives and record the composition.
 4. If neither a component nor a supported composition exists, mark a design-system gap. Do not silently invent a shared primitive.
 
+Then reconcile the Figma variant and visible state with the current component's documented state model. Preserve the product intent, not an unsupported or stale representation. When they disagree, classify the conflict as a prototype defect, version mismatch, intentional product exception or design-system gap before implementation.
+
 A gap may justify a local implementation only when the user requested it or the target repository already owns that pattern. A new shared wrapper needs a demonstrated gap and repeated credible use. Keep an isolated prototype clearly labeled when those conditions are not met.
 
 ## Mandatory postflight
@@ -91,8 +93,10 @@ After implementation and before visual scoring:
 3. Reinspect parent/child layout defaults whenever padding, margin, overflow, position, display or sizing was overridden.
 4. Confirm every imported component and icon exists in the installed packages.
 5. Run TypeScript, lint and the repository's deterministic Axiom checker when one exists. Treat unsupported props, legacy component parts, invalid compound anatomy, raw replacement controls and icon-policy failures as blockers.
-6. Exercise the rendered interaction states and complete `acceptance-and-geometry.md` plus `visual-quality-gates.md`.
-7. Report the component evidence record, checks run, exceptions, version differences and anything that could not be verified.
+6. Reconcile the rendered accessibility tree or focusable DOM with the component-and-state inventory so internally rendered controls are not omitted.
+7. Exercise every applicable transition and distinct render mode, then complete `component-state-conformance.md`, `acceptance-and-geometry.md` and `visual-quality-gates.md`.
+8. Diagnose and repair the owning layer for every mismatch. An upstream claim requires isolated evidence against the installed version and does not permit a completion claim while the required behavior remains broken.
+9. Report the component evidence record, checks run, exceptions, version differences and anything that could not be verified.
 
 Code compilation does not prove correct composition. Visual similarity does not prove valid API use. Both evidence paths must pass.
 

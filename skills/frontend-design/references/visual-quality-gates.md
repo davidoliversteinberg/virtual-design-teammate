@@ -6,10 +6,10 @@ This is the completion authority for visible Optimizely product UI. Score the re
 
 Before scoring:
 
-1. Complete the acceptance contract and systemic scope in `acceptance-and-geometry.md`.
+1. Complete the semantic component-and-state contract in `component-state-conformance.md` and the acceptance scope in `acceptance-and-geometry.md`.
 2. Render the exact changed route, named object and state at its primary desktop width.
-3. Render at least one narrower width appropriate to the route.
-4. Exercise reachable hover, focus, selected, loading, empty, error, disabled, modal/drawer and action states that changed.
+3. Discover interactive descendants from the source plus the rendered accessibility tree or focusable DOM.
+4. Exercise every applicable transition and each distinct render mode derived from the selected component contracts. Choose viewport widths around real mode boundaries rather than arbitrary desktop and narrow values.
 5. Capture screenshots and measure explicit geometry requirements against visible painted boundaries.
 6. Compare the pixels and measurements with the acceptance contract, design brief and supplied references.
 7. Fix visible problems, then score the revised result.
@@ -50,6 +50,8 @@ Do not inflate scores because the code is compliant. A technically correct surfa
 Any of these blocks completion regardless of score:
 
 - an explicit user acceptance criterion that remains unmet or was tested on a substitute route, object, state or viewport;
+- an unresolved mismatch between semantic intent, selected design-system pattern, component anatomy/configuration or rendered state;
+- an applicable transition, internally rendered control or distinct render mode omitted from verification;
 - a claimed measurement taken from an offscreen, unclipped or otherwise different boundary than the one visible to the user;
 - computed geometry and screenshot evidence that contradict one another;
 - a repeated component fix applied only to one instance while the shared defect remains elsewhere;
@@ -62,7 +64,7 @@ Any of these blocks completion regardless of score:
 - current/pending imagery that depicts different subjects or incompatible crops in a visual comparison;
 - dead controls, empty menus, fake filters or tabs with no content;
 - broken keyboard interaction, focus visibility or essential contrast;
-- broken responsive layout or horizontal clipping at the tested width;
+- broken responsive layout, incorrect responsive component mode or horizontal clipping at the tested width;
 - unverified rendered screenshots;
 - raw controls or hardcoded product chrome where Axiom/semantic tokens exist.
 - an Axiom compound or interactive component whose anatomy, props or icon export contradict live documentation or the installed package;

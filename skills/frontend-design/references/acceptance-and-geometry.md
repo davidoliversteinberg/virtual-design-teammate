@@ -19,9 +19,10 @@ Fix the rule that produced the defect, not only the first visible instance. Inve
 
 - every component or wrapper sharing the implementation;
 - every repeated instance on the current surface;
-- default, hover, focus, selected, disabled, loading, empty, error and permission states that affect it;
+- every distinct semantic contract and interactive descendant identified by `component-state-conformance.md`, including controls rendered internally by a compound component;
+- every applicable state and transition derived from the component contract and product logic;
 - long labels, missing media, dense metadata and other content extremes;
-- primary and narrower viewport behavior;
+- every distinct render mode, including structural or behavioral changes caused by viewport, container, overlay or input method;
 - sibling routes only when they reuse the same implementation or rule.
 
 Do not wander to a similar-looking component while leaving the named target unresolved. Verify the exact target first, then prove the systemic fix across the inventory.
@@ -79,6 +80,7 @@ Completion requires all of the following:
 
 - the exact reported defect passes;
 - the systemic instances and relevant states pass;
+- the semantic mapping, component contract and rendered state agree;
 - computed geometry agrees with captured pixels;
-- no narrower-width regression appears;
+- every distinct render mode passes, not merely two arbitrary viewport widths;
 - any unavailable evidence is named rather than assumed.

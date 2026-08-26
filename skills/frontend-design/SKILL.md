@@ -6,7 +6,7 @@ description: >
   Axiom-aware implementation, responsive rendering, and scored visual-quality validation.
   Use for making or changing interfaces; use design-review instead when the user only wants critique.
 metadata:
-  version: "0.5.1"
+  version: "0.5.2"
   phase: make
 ---
 
@@ -44,8 +44,9 @@ Do not load a sibling merely to repeat generic advice. The supporting skill owns
 For every visible UI task, read in this order:
 
 1. [`references/interaction-and-composition.md`](references/interaction-and-composition.md) — interaction model, focal point, composition, typography, density, content, actions and surfaces.
-2. [`references/acceptance-and-geometry.md`](references/acceptance-and-geometry.md) — explicit acceptance criteria, systemic scope, visible-boundary measurement and correction-loop discipline.
-3. [`references/visual-quality-gates.md`](references/visual-quality-gates.md) — scored rendered-quality gate, accessibility, responsiveness and automatic failures.
+2. [`references/component-state-conformance.md`](references/component-state-conformance.md) — semantic intent, correct design-system mapping, derived state models, rendered modes and repair protocol.
+3. [`references/acceptance-and-geometry.md`](references/acceptance-and-geometry.md) — explicit acceptance criteria, systemic scope, visible-boundary measurement and correction-loop discipline.
+4. [`references/visual-quality-gates.md`](references/visual-quality-gates.md) — scored rendered-quality gate, accessibility, responsiveness and automatic failures.
 
 Then read only the references that apply:
 
@@ -55,7 +56,7 @@ Then read only the references that apply:
 - [`references/visual-reference-analysis.md`](references/visual-reference-analysis.md) whenever a screenshot, mockup or prototype is supplied.
 - [`references/motion-rules.md`](references/motion-rules.md) when motion, transitions, loading, panels, menus or animated state changes are involved.
 
-A Figma link or node ID is a different kind of input than a prose description or a screenshot from an unspecified source: it is fetchable ground truth for exact spacing, typography and component composition, not just interaction intent. When one is supplied, fetch it (`get_design_context`, `get_variable_defs`, `get_screenshot`) before the design brief below, and build to it 1:1 — do not substitute a screenshot-derived approximation or prior judgment call once the actual node is available.
+A Figma link or node ID is fetchable evidence for product intent, hierarchy, content and visual acceptance. It is not proof that a named component, variant or visible state matches the current design-system contract. When one is supplied, fetch it (`get_design_context`, `get_variable_defs`, `get_screenshot`) before the design brief, then reconcile it through `component-state-conformance.md`. Preserve the intended experience while correcting stale, unsupported or behaviorally wrong component and state choices.
 
 The target repository's build, CSS, navigation, file architecture, and git rules remain authoritative. Product-domain rules and Opal-specific layers are additive; they do not override the design-quality contract.
 
@@ -92,7 +93,8 @@ The detailed rules and positive alternatives live only in the references above. 
 After the design brief:
 
 - Inspect nearby live routes and reusable components.
-- Implement with the applicable Axiom authority and target-repository rules. For Axiom work, complete the component evidence record before coding.
+- Resolve the component-and-state conformance record before coding. The presence of a design-system import never proves that the correct primitive, anatomy, props, states or responsive mode were used.
+- Implement with the applicable Axiom authority and target-repository rules. For Axiom work, complete the Axiom evidence record before coding.
 - Preserve semantic tokens, spacing tokens, icon-package rules, form/menu rules, dark mode, accessibility and file boundaries.
 - Do not invent a design-system primitive, generic wrapper or component infrastructure until live lookup and installed-package inspection prove there is no suitable component or documented composition. A shared wrapper also needs repeated product use or explicit user scope.
 - Never leave dead controls or claim behavior that is not implemented.
@@ -100,13 +102,13 @@ After the design brief:
 
 ## Completion contract
 
-Visible UI work is incomplete until it is rendered at the primary desktop width and at least one narrower width, compared against the design intent/reference, and scored with `visual-quality-gates.md`.
+Visible UI work is incomplete until it is rendered at the primary desktop width, a narrower width, and both sides of every discovered component-mode boundary, compared against the reconciled design and system contracts, and scored with `visual-quality-gates.md`.
 
 Every explicit user correction remains a blocking acceptance criterion until the exact route, object, state and viewport pass against the visible rendered boundary. A prior pass is revoked when the user reports that the defect remains. Do not substitute a similar component, route or state, and do not use computed styles or invisible layout bounds to overrule contradictory pixels.
 
 Minimum passing score: **17/20 with no zero and no automatic failure**. TypeScript, lint, route `200`, or component compliance alone never proves visual quality.
 
-For Axiom work, completion also requires the postflight in `axiom-evidence-and-compliance.md`: verify every changed compound or interactive component against live documentation and the installed package, run the repository's deterministic Axiom check when available, and report any exception or unverifiable mapping.
+Completion requires the conformance postflight in `component-state-conformance.md`. For Axiom work, also complete `axiom-evidence-and-compliance.md`: verify every changed compound or interactive component against live documentation and the installed package, run the repository's deterministic Axiom check when available, and report any exception or unverifiable mapping.
 
 If browser or screenshot verification is unavailable, state that explicitly and do not claim the UI is visually verified.
 

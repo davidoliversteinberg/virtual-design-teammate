@@ -23,7 +23,7 @@ Read the **[complete frontend-design user guide](docs/frontend-design-guide.md)*
 
 - everything the skill can design, implement, inspect, and verify;
 - the automatic supporting-skill routing rules;
-- the Axiom component-evidence and Figma reconciliation workflow;
+- the universal component-and-state conformance workflow, plus Axiom and Figma evidence;
 - the acceptance contract, systemic regression scope and visible-geometry verification workflow;
 - ready-to-copy prompts for build, review, audit, Figma, UX-writing, and branch work;
 - expected outputs, limitations, installation, and update instructions.
@@ -61,9 +61,11 @@ They are designed to work together. The core routes visible interface work to `f
 
 ### Axiom component accuracy
 
-For Axiom interfaces, the skill does not rely on remembered component APIs. It inventories the intended UI, retrieves every selected interactive or compound component through the stable Axiom MCP, reconciles Figma instances with Code Connect and the installed package, records the required component parts and props, and verifies the implementation again after coding.
+For Axiom interfaces, the skill does not rely on remembered component APIs or accept an Axiom import as proof of correctness. It first defines each element by semantic role and user intent, then verifies the correct system primitive or documented pattern, required anatomy and configuration, applicable state model, and every distinct rendered mode.
 
-This is especially important for compound components. A Card must use its documented regions and slots rather than an improvised collection of boxes; a Button must use its icon API rather than hand-built spacing; and a Figma component without a code mapping must be classified as a supported composition or an explicit design-system gap before new infrastructure is created.
+Figma and prototypes supply product intent and visual acceptance evidence. They do not automatically prove that a component, variant or state is current or supported. The skill reconciles them with Code Connect, live Axiom documentation, the installed package and rendered behavior. Any disagreement is classified and repaired at the owning layer instead of being copied, cosmetically disguised or reduced to another memorized exception.
+
+After implementation, the skill reconciles changed source with the rendered accessibility tree or focusable DOM, exercises every applicable transition and tests each actual responsive or overlay mode. This catches controls created internally by compound components and differences that static code inspection cannot see.
 
 The public [components](https://optimizely-axiom.github.io/optiaxiom/components/), [styling](https://optimizely-axiom.github.io/optiaxiom/styling/), and [guides](https://optimizely-axiom.github.io/optiaxiom/guides/) remain authoritative supporting sources. The [Axiom MCP](https://optimizely-axiom.github.io/optiaxiom/guides/mcp/) supplies relevant current documentation on demand, while the target repository's installed package types remain the final API check.
 
@@ -146,7 +148,7 @@ The system explicitly detects common generic-interface failure modes:
 
 The frontend-design skill maps design intent into Axiom V3 components, semantic color tokens, spacing tokens, typography roles, form patterns, menu patterns, page-shell behavior, icons, dark mode, accessibility, and repository conventions.
 
-Component APIs, compound anatomy, patterns, tokens and icons are retrieved before implementation and verified again afterward. Figma nodes and Code Connect mappings are reconciled with the installed package rather than treated as screenshots or trusted from memory. If live tools are unavailable, the skill inspects installed declarations and states the missing verification.
+Component APIs, compound anatomy, patterns, tokens, icons, states and responsive behavior are retrieved before implementation and verified again afterward. Figma nodes and Code Connect mappings are treated as intent evidence, then reconciled with the installed package and rendered contract rather than trusted from memory or copied uncritically. If live tools are unavailable, the skill inspects installed declarations and states the missing verification.
 
 ### 8. Visual-reference interpretation
 
@@ -168,7 +170,7 @@ Decorative AI shimmer, perpetual glow, elastic easing, and motion used to compen
 
 ### 11. Rendered responsive verification
 
-Visible work is not complete when TypeScript compiles or the Axiom components are technically valid. The changed route must be rendered at its primary desktop width and at least one narrower width, with relevant interaction states exercised and screenshots inspected.
+Visible work is not complete when TypeScript compiles or the Axiom components are technically valid. The changed route must be rendered at its primary desktop width, a narrower width, and both sides of any discovered component-mode boundary, with every applicable transition exercised and the pixels inspected.
 
 ### 12. A scored visual-quality gate
 

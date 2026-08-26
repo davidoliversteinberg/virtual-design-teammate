@@ -40,15 +40,15 @@ It preserves readable body text, limits captions and monospaced uppercase styles
 
 ### Implement against OptiAxiom evidence
 
-It verifies component names, props, compound anatomy, patterns, tokens, and icons before implementation. It does not trust model memory or invent a component because its name sounds plausible.
+It verifies the semantic role, correct component or documented pattern, props, compound anatomy, tokens, icons, state model, and rendered modes before implementation. A design-system import alone is not accepted as proof of correctness.
 
 ### Reconcile Figma with code
 
-When a Figma node is supplied, the skill treats it as fetchable design evidence. It inspects the node, variables, screenshot, and Code Connect mapping when available, then reconciles those findings with the installed package and repository conventions.
+When a Figma node is supplied, the skill treats it as fetchable product-intent and visual-acceptance evidence. It inspects the node, variables, screenshot, and Code Connect mapping when available, then verifies whether its component choices and states remain valid in the installed system. It preserves intended behavior while correcting stale, unsupported, or prototype-only representations.
 
 ### Design the complete state model
 
-It can add and evaluate default, hover, focus, selected, disabled, loading, empty, error, success, permission, async, and recovery states instead of delivering only a happy-path screenshot.
+It derives applicable states and transitions from each component contract and the product logic instead of relying on a fixed checklist or delivering only a happy-path screenshot. It includes interactive descendants created internally by compound components and every mode where viewport, container, overlay, or input method changes structure or behavior.
 
 ### Integrate UX writing and accessibility
 
@@ -56,7 +56,7 @@ Visible strings, terminology, confirmation, status, empty-state, and recovery la
 
 ### Render and quality-gate the result
 
-The skill renders changed UI at the primary desktop width and at least one narrower width, exercises relevant states, inspects screenshots, and scores ten quality categories. Passing requires at least 17/20, no category scored zero, and no automatic failure.
+The skill renders changed UI at the primary desktop width, a narrower width, and both sides of every discovered component-mode boundary. It exercises applicable transitions, inspects screenshots, and scores ten quality categories. Passing requires at least 17/20, no category scored zero, and no automatic failure.
 
 ### Lock explicit corrections and verify systemic fixes
 
@@ -98,7 +98,10 @@ Compact design brief
   content budget / type and actions / surface plan
         |
         v
-Axiom + Figma evidence preflight
+Semantic component + state contract
+        |
+        v
+Axiom + Figma evidence reconciliation
         |
         v
 Implementation in the target repository
@@ -115,7 +118,20 @@ Rendered desktop and narrow-width inspection
 
 The target repository remains authoritative for its build system, routes, local wrappers, navigation, file architecture, and git rules. The skill improves the interface without assuming permission for unrelated infrastructure or product changes.
 
-## How Axiom accuracy works
+## How component and state accuracy works
+
+The skill does not accumulate rules for individual components or past bugs. It applies one conformance loop to every interface element:
+
+1. Define the intended user action and semantic role.
+2. Prove the correct system primitive or documented composition from current evidence.
+3. Derive applicable state transitions and distinct rendered modes from that contract.
+4. Verify structure, behavior, and rendered appearance independently.
+5. Classify disagreement as an intent, mapping, composition, application, system, or version defect.
+6. Repair the earliest owning layer and repeat the verification loop.
+
+The prototype, design system, implementation, and rendered interface answer different questions. None is accepted as false proof that the others are correct.
+
+## How Axiom evidence supports conformance
 
 ### Evidence before coding
 
@@ -125,17 +141,12 @@ For every selected interactive or compound component, the skill establishes a co
 - the intended Axiom component or documented composition;
 - required compound parts and valid parent-child placement;
 - relevant props and variants;
+- applicable states, transitions, and responsive or overlay modes;
 - token and icon requirements;
 - Figma and Code Connect evidence when available;
 - any repository-specific wrapper or convention.
 
-The evidence hierarchy is:
-
-1. target-repository version and local conventions;
-2. current Axiom MCP component, pattern, token, icon, guide, and test results;
-3. Figma node data and Code Connect mappings;
-4. public Axiom documentation;
-5. installed package exports and TypeScript declarations as the final API check.
+Evidence is separated by authority: the user owns the outcome, Figma supplies product intent and visual acceptance, current Axiom documentation supplies the documented contract, the installed package supplies the executable version, and the rendered interface proves user-perceivable behavior. Conflicts are reconciled according to the question rather than by trusting one universal hierarchy.
 
 ### Compound components are treated as contracts
 
@@ -156,7 +167,7 @@ It does not silently introduce a generic primitive, wrapper, or new component sy
 
 ### Verification after coding
 
-The postflight rechecks every changed interactive or compound component against live documentation and the installed package. In Axiom Play, the repository-level `yarn check:axiom` command also detects classes of errors that prompt instructions alone cannot reliably prevent, including invented imports, invalid Card anatomy, incorrect Button icon treatment, raw controls, and missing accessible labels.
+The postflight rechecks every changed interactive or compound component against live documentation and the installed package, then reconciles source inventory with the rendered accessibility tree or focusable DOM. It exercises applicable transitions and every distinct rendered mode before scoring. In Axiom Play, the repository-level `yarn check:axiom` command catches structural classes of error, while browser verification catches state and responsive failures that static analysis cannot see.
 
 The reusable skill can request and interpret that check; the deterministic checker belongs in the target repository so it can validate the exact installed package and local conventions.
 
