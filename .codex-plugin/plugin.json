@@ -1,38 +1,36 @@
 {
-  "name": "virtual-design-teammate",
-  "version": "0.5.2",
-  "description": "An Optimizely product-design teammate spanning strategy, UX writing, interaction and frontend design, critique, validation, experimentation, and developer handoff.",
+  "name": "frontend-designer",
+  "version": "1.0.0",
+  "description": "Design, implement, diagnose, and quality-gate Optimizely interfaces with verified component and state conformance.",
   "author": {
     "name": "David Steinberg and contributors",
     "url": "https://github.com/davidoliversteinberg"
   },
-  "homepage": "https://github.com/davidoliversteinberg/virtual-design-teammate",
-  "repository": "https://github.com/davidoliversteinberg/virtual-design-teammate",
+  "homepage": "https://github.com/davidoliversteinberg/frontend-designer",
+  "repository": "https://github.com/davidoliversteinberg/frontend-designer",
   "keywords": [
     "design",
-    "ux",
     "frontend",
     "axiom",
     "optimizely",
-    "testing"
+    "ui"
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Virtual Design Teammate",
-    "shortDescription": "Optimizely product design from strategy through validated UI",
-    "longDescription": "A routed product-design partner for Optimizely teams. It combines strategy, journeys, information architecture, UX writing, interaction and frontend design, Axiom-aware implementation, critique, usability validation, experimentation, and developer handoff.",
+    "displayName": "Frontend Designer",
+    "shortDescription": "Verified Optimizely interface design and implementation",
+    "longDescription": "A standalone frontend design skill for Optimizely product UI. It maps intent to current Axiom contracts, implements interfaces, diagnoses the owning layer of defects, and validates component states and rendered modes before completion.",
     "developerName": "David Steinberg and contributors",
     "category": "Productivity",
     "capabilities": [
       "Interactive",
       "Write"
     ],
-    "websiteURL": "https://github.com/davidoliversteinberg/virtual-design-teammate",
+    "websiteURL": "https://github.com/davidoliversteinberg/frontend-designer",
     "defaultPrompt": [
-      "Help me design an Optimizely product workflow.",
-      "Use frontend-design to implement this interface with verified Axiom components and rendered responsive QA.",
-      "Critique this interface and prioritize the fixes.",
-      "Create a plan to validate this design with users."
+      "Use frontend-designer to implement this interface with verified Axiom component and state contracts.",
+      "Review and fix this UI, then run the rendered conformance postflight.",
+      "Reconcile this Figma design with the installed Axiom version and implement it."
     ]
   }
 }
