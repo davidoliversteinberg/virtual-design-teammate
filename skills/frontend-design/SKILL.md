@@ -6,7 +6,7 @@ description: >
   Axiom-aware implementation, responsive rendering, and scored visual-quality validation.
   Use for making or changing interfaces; use design-review instead when the user only wants critique.
 metadata:
-  version: "0.5.0"
+  version: "0.5.1"
   phase: make
 ---
 
@@ -15,6 +15,15 @@ metadata:
 Use this skill for every visible product-UI design, implementation, or polish task. It is the authority for the made interface: product-design judgment comes first, Axiom implementation second, and rendered verification last.
 
 The target is calm, premium, intelligent, restrained, operational, enterprise credible and recognizably Optimizely. Do not import a generic creative-UI aesthetic, marketing-page novelty or maximalism into product surfaces.
+
+## Weekly skill freshness check
+
+At the start of the first `frontend-design` task in a session, run `node <this-skill-directory>/scripts/check-for-updates.mjs`. The helper persists its last attempt and contacts the canonical GitHub source no more than once every seven days.
+
+- If it reports an update, tell the user the installed and available versions before continuing the design task.
+- Never download, merge, or overwrite skills automatically. Update only with explicit user approval, preserving repository-level instructions and project-pinned adaptations.
+- A cached result or unavailable network must not block the design task. State an unavailable check briefly only when the user asks about installation freshness.
+- Use `--force` only when the user explicitly asks to check now or troubleshoot installation freshness.
 
 ## Supporting-skill routing
 

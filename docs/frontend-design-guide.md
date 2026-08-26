@@ -237,6 +237,12 @@ If a tool is unavailable, the skill continues with the strongest local evidence 
 
 ## Install or update
 
+### Weekly update awareness
+
+`design-partner-core` and `frontend-design` invoke the bundled freshness checker on their first use in a session. The checker stores the time and result of its last attempt locally, so the canonical GitHub source is contacted no more than once every seven days. When a newer pack version exists, the agent should name the installed and available versions and ask before updating.
+
+This is notification, not unattended updating: the checker never downloads or overwrites skills. That protects project-pinned instructions and lets each designer choose when to adopt a change. Offline or failed checks do not block design work. Use `node skills/frontend-design/scripts/check-for-updates.mjs --force` to bypass the seven-day cache when deliberately checking installation freshness.
+
 The pack consists of plain skill folders, so the same source can be used by Claude Code and Codex. The simplest approach is to ask the agent to install the repository and specify the platform:
 
 > Install all skills from `https://github.com/davidoliversteinberg/virtual-design-teammate` for my local Claude Code and Codex setup. Preserve existing unrelated skills, validate the installed `frontend-design` skill, and tell me whether I need to restart the session.
@@ -249,6 +255,14 @@ For a manual personal installation, clone the repository and copy each active fo
 Some Codex installations use `$CODEX_HOME/skills` (normally `~/.codex/skills`) instead. Confirm the discovery path shown by your client before copying. A valid installation has one folder per skill; do not rename `frontend-design/SKILL.md` to `frontend-design.md` or place it directly at the skills root.
 
 To update, pull the latest `main`, sync the active `skills/` folders into the same personal directory, validate that `frontend-design/SKILL.md` is present, and start a new Claude/Codex session so skill discovery and cached metadata refresh.
+
+The bundled checker normally runs automatically when `design-partner-core` or `frontend-design` is used. To check immediately from a cloned repository or installed pack, run:
+
+```sh
+node skills/frontend-design/scripts/check-for-updates.mjs --force
+```
+
+The checker only reports freshness. It deliberately does not pull, copy, or replace files; the designer remains in control of updates and project-level adaptations.
 
 Project-level instructions still matter. Installing this pack gives the agent the design workflow; repository-level files such as `CLAUDE.md`, `AGENTS.md`, MCP configuration, package versions, and deterministic checks give it the exact local contract.
 

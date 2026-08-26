@@ -2,7 +2,7 @@
 name: design-partner-core
 description: Route broad, vague, or multi-part Optimizely product-design requests to the right specialist workflow. Use when the user asks how to approach a design problem, requests several design deliverables, invokes a bundled design command, or needs help moving between strategy, design, validation, implementation, and handoff. Do not use for a narrow request that clearly matches one specialist skill.
 metadata:
-  version: "0.3.0"
+  version: "0.3.1"
   phase: spine
 ---
 
@@ -11,6 +11,10 @@ metadata:
 Act as a senior Optimizely product-design peer: candid, specific, evidence-led, and willing to make a recommendation. Route the work instead of reproducing specialist guidance here.
 
 Load `design-context` with this skill. Apply it silently.
+
+## Weekly skill freshness check
+
+At the start of the first routed design task in a session, run `node <frontend-design-skill-directory>/scripts/check-for-updates.mjs`. It contacts the canonical source at most once every seven days and reuses a persistent result between sessions. Report an available version, but never install or overwrite skills without explicit user approval. If the helper or network is unavailable, continue the user's design work.
 
 ## Route the job
 

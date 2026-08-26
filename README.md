@@ -17,6 +17,8 @@ This repository is currently a testing fork. The inherited implementation is pre
 
 The frontend skill automatically adds the relevant review, flow, pattern, UX-writing, accessibility, and handoff specialists. Users should describe the outcome and evidence they have; they do not need to orchestrate the skill stack themselves.
 
+The two main entry skills also perform a lightweight weekly freshness check. At most once every seven days, they compare the installed version with this repository's `main` version and tell the user when an update is available. They never install updates or overwrite project-specific adaptations without explicit approval, and an unavailable network never blocks design work.
+
 Read the **[complete frontend-design user guide](docs/frontend-design-guide.md)** for:
 
 - everything the skill can design, implement, inspect, and verify;
